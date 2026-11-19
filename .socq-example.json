@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "templateVersion": "2.0.0",
+  "kind": "platform",
+  "platform": "facebook",
+  "endpointCount": 14,
+  "endpoints": [
+    "facebook/pages",
+    "facebook/posts",
+    "facebook/comments",
+    "facebook/video-transcript",
+    "facebook/group-posts",
+    "facebook/events-search",
+    "facebook/ad-transcript",
+    "facebook/comment-replies",
+    "facebook/company-reviews",
+    "facebook/event-details",
+    "facebook/profile-events",
+    "facebook/profile-photos",
+    "facebook/profiles",
+    "facebook/reels"
+  ],
+  "landingPage": "https://socq.ai/apis/facebook",
+  "docsPage": "https://docs.socq.ai/api-manual/facebook/overview",
+  "generatedFrom": "SocQAPI/socq-example-template"
+}

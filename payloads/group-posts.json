@@ -1,0 +1,7 @@
+{
+  "urls": [
+    "https://www.facebook.com/groups/GROUP_ID/"
+  ],
+  "results_limit": 30,
+  "sort_by": "recent_activity"
+}

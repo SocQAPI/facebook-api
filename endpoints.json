@@ -1,0 +1,780 @@
+{
+  "schemaVersion": 1,
+  "platform": "facebook",
+  "platformName": "Facebook",
+  "baseUrl": "https://api.socq.ai",
+  "creditUsd": 0.005,
+  "endpoints": [
+    {
+      "publicId": "facebook/pages",
+      "name": "Facebook Pages API",
+      "description": "Collect public Facebook Page profile details, contact fields, visible follower and like counts, and page metadata from one or more Page URLs.",
+      "method": "POST",
+      "path": "/v1/facebook/pages",
+      "payload": "payloads/pages.json",
+      "launchedAt": "2026-07-11",
+      "price": "2.4 credits ($0.012) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 2.4,
+        "estimateResultCount": 100,
+        "estimateInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/pages",
+      "landingUrl": "https://socq.ai/apis/facebook/pages",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Deprecated and ignored. Provide page/profile URLs in urls; this endpoint does not perform keyword search or resolve usernames.",
+            "deprecated": true
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public Facebook page/profile URLs, such as https://www.facebook.com/nasa. Individual post/reel URLs are not supported."
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Deprecated and ignored. Provide page/profile URLs in urls; this endpoint does not perform keyword search or resolve usernames.",
+            "deprecated": true
+          }
+        },
+        "required": [
+          "urls"
+        ],
+        "description": "Provide public Facebook page/profile URLs in urls. Keyword search, username-only input, and individual post/reel URLs are not supported. Legacy query and usernames fields are ignored when valid urls are supplied."
+      }
+    },
+    {
+      "publicId": "facebook/posts",
+      "name": "Facebook Posts API",
+      "description": "Collect public Facebook posts, text, media references, timestamps, reactions, comments, shares, and author context from one or more public URLs.",
+      "method": "POST",
+      "path": "/v1/facebook/posts",
+      "payload": "payloads/posts.json",
+      "launchedAt": "2026-07-11",
+      "price": "1 credit ($0.005) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 1,
+        "estimateResultCount": 100,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/posts",
+      "landingUrl": "https://socq.ai/apis/facebook/posts",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Deprecated and ignored. Provide page/profile URLs in urls; this endpoint does not perform keyword search or resolve usernames.",
+            "deprecated": true
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public Facebook page/profile URLs, such as https://www.facebook.com/nasa. Individual post/reel URLs are not supported."
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Deprecated and ignored. Provide page/profile URLs in urls; this endpoint does not perform keyword search or resolve usernames.",
+            "deprecated": true
+          }
+        },
+        "required": [
+          "urls"
+        ],
+        "description": "Provide public Facebook page/profile URLs in urls. Keyword search, username-only input, and individual post/reel URLs are not supported. Legacy query and usernames fields are ignored when valid urls are supplied."
+      }
+    },
+    {
+      "publicId": "facebook/comments",
+      "name": "Facebook Comments API",
+      "description": "Collect public Facebook comments from one or more post URLs and return structured text, author details, timestamps, visible engagement, media, and source links.",
+      "method": "POST",
+      "path": "/v1/facebook/comments",
+      "payload": "payloads/comments.json",
+      "launchedAt": "2026-07-15",
+      "price": "0.3 credits ($0.0015) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.3,
+        "estimateResultCount": 100,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/comments",
+      "landingUrl": "https://socq.ai/apis/facebook/comments",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "facebook/video-transcript",
+      "name": "Facebook Video Transcript API",
+      "description": "Extract available transcript text from public Facebook video post and Reel URLs, returning source links, format, and collection time as normalized records.",
+      "method": "POST",
+      "path": "/v1/facebook/video-transcript",
+      "payload": "payloads/video-transcript.json",
+      "launchedAt": "2026-07-23",
+      "price": "0.7 credits ($0.0035) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.7,
+        "estimateResultCount": 100,
+        "estimateInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/video-transcript",
+      "landingUrl": "https://socq.ai/apis/facebook/video-transcript",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "facebook/group-posts",
+      "name": "Facebook Group Posts API",
+      "description": "Collect public Facebook group posts from group URLs with selectable ordering, returning text, authors, timestamps, videos, and visible engagement as normalized records.",
+      "method": "POST",
+      "path": "/v1/facebook/group-posts",
+      "payload": "payloads/group-posts.json",
+      "launchedAt": "2026-07-23",
+      "price": "1.2 credits ($0.006) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 1.2,
+        "estimateResultCount": 100,
+        "estimateResultCountPerInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/group-posts",
+      "landingUrl": "https://socq.ai/apis/facebook/group-posts",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "results_limit": {
+            "type": "integer",
+            "minimum": 3,
+            "maximum": 2000
+          },
+          "sort_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "facebook/events-search",
+      "name": "Facebook Events Search API",
+      "description": "Search public Facebook events by keyword and return normalized identity, schedule, place, attendance, cover media, and event-state fields.",
+      "method": "POST",
+      "path": "/v1/facebook/events-search",
+      "payload": "payloads/events-search.json",
+      "launchedAt": "2026-07-23",
+      "price": "0.6 credits ($0.003) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.6,
+        "estimateResultCount": 100,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/events-search",
+      "landingUrl": "https://socq.ai/apis/facebook/events-search",
+      "required": [
+        "query"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search query."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 7,
+            "maximum": 2000
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "publicId": "facebook/ad-transcript",
+      "name": "Facebook Ad Transcript API",
+      "description": "Extract available spoken-word transcripts from Facebook Ad Library URLs, returning text, language, format, collection time, source links, and shortcode context.",
+      "method": "POST",
+      "path": "/v1/facebook/ad-transcript",
+      "payload": "payloads/ad-transcript.json",
+      "launchedAt": "2026-07-25",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 0,
+        "estimateInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/ad-transcript",
+      "landingUrl": "https://socq.ai/apis/facebook/ad-transcript",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "facebook/comment-replies",
+      "name": "Facebook Comment Replies API",
+      "description": "Retrieve public Facebook replies from a stable post URL and parent comment ID, returning text, author identity, engagement, timestamps, and parent context in normalized records.",
+      "method": "POST",
+      "path": "/v1/facebook/comment-replies",
+      "payload": "payloads/comment-replies.json",
+      "launchedAt": "2026-07-25",
+      "price": "0.3 credits ($0.0015) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.3,
+        "estimateResultCount": 100,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/comment-replies",
+      "landingUrl": "https://socq.ai/apis/facebook/comment-replies",
+      "required": [],
+      "requiredAnyOf": [
+        [
+          "comment_id",
+          "url"
+        ],
+        [
+          "expansion_token",
+          "feedback_id"
+        ]
+      ],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "comment_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public comment identifier."
+          },
+          "expansion_token": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The token used to read replies for a Facebook comment."
+          },
+          "feedback_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The parent Facebook comment feedback identifier."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public content or product URL."
+          }
+        },
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "comment_id",
+              "url"
+            ]
+          },
+          {
+            "required": [
+              "expansion_token",
+              "feedback_id"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "publicId": "facebook/company-reviews",
+      "name": "Facebook Company Reviews API",
+      "description": "Collect public reviews from Facebook Page /reviews URLs and return normalized review text, reviewer links, ratings, likes, timestamps, and company context.",
+      "method": "POST",
+      "path": "/v1/facebook/company-reviews",
+      "payload": "payloads/company-reviews.json",
+      "launchedAt": "2026-07-24",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 100,
+        "estimateResultCountPerInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/company-reviews",
+      "landingUrl": "https://socq.ai/apis/facebook/company-reviews",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "facebook/event-details",
+      "name": "Facebook Event Details API",
+      "description": "Collect normalized event metadata, schedule, location, public media, and visible response metrics from known Facebook event URLs.",
+      "method": "POST",
+      "path": "/v1/facebook/event-details",
+      "payload": "payloads/event-details.json",
+      "launchedAt": "2026-07-25",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 1,
+        "estimateInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/event-details",
+      "landingUrl": "https://socq.ai/apis/facebook/event-details",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "facebook/profile-events",
+      "name": "Facebook Profile Events API",
+      "description": "Collect public events associated with Facebook profile or Page URLs, returning names, descriptions, schedules, locations, media, visible metrics, and source context in normalized records.",
+      "method": "POST",
+      "path": "/v1/facebook/profile-events",
+      "payload": "payloads/profile-events.json",
+      "launchedAt": "2026-07-25",
+      "price": "0.6 credits ($0.003) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.6,
+        "estimateResultCount": 100,
+        "estimateResultCountPerInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/profile-events",
+      "landingUrl": "https://socq.ai/apis/facebook/profile-events",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "facebook/profile-photos",
+      "name": "Facebook Profile Photos API",
+      "description": "Collect public Facebook profile and Page photos from one or more URLs, returning captions, author context, engagement, image metadata, and source links as normalized records.",
+      "method": "POST",
+      "path": "/v1/facebook/profile-photos",
+      "payload": "payloads/profile-photos.json",
+      "launchedAt": "2026-07-25",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 100,
+        "estimateResultCountPerInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/profile-photos",
+      "landingUrl": "https://socq.ai/apis/facebook/profile-photos",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "facebook/profiles",
+      "name": "Facebook Profiles API",
+      "description": "Collect public Facebook profile or Page details from known URLs, returning normalized identity, names, bio text, avatars, visible counters, and input context.",
+      "method": "POST",
+      "path": "/v1/facebook/profiles",
+      "payload": "payloads/profiles.json",
+      "launchedAt": "2026-07-25",
+      "price": "1.2 credits ($0.006) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 1.2,
+        "estimateResultCount": 1,
+        "estimateInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/profiles",
+      "landingUrl": "https://socq.ai/apis/facebook/profiles",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "facebook/reels",
+      "name": "Facebook Reels API",
+      "description": "Collect public Facebook Reels from profile or Page URLs, returning captions, author context, engagement, video metadata, and source links as normalized records.",
+      "method": "POST",
+      "path": "/v1/facebook/reels",
+      "payload": "payloads/reels.json",
+      "launchedAt": "2026-07-25",
+      "price": "0.7 credits ($0.0035) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.7,
+        "estimateResultCount": 100,
+        "estimateResultCountPerInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/facebook/reels",
+      "landingUrl": "https://socq.ai/apis/facebook/reels",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public Facebook page/profile URLs, such as https://www.facebook.com/nasa. Individual post/reel URLs are not supported."
+          }
+        },
+        "required": [
+          "urls"
+        ],
+        "description": "Provide Facebook page/profile URLs to collect their reels. A single /reel/... video URL is not a profile URL."
+      }
+    }
+  ]
+}
